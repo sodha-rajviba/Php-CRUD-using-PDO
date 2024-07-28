@@ -1,0 +1,14 @@
+DROP DATABASE IF EXISTS `Student`;
+
+CREATE DATABASE `Student`;
+
+USE `Student`;
+
+CREATE TABLE `Student_details`(
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(250) NOT NULL,
+    Address VARCHAR(250) NOT NULL,
+    Gender VARCHAR(250) NOT NULL,
+    Email VARCHAR(250) NOT NULL,
+    Mobileno VARCHAR(250) NOT NULL
+);
