@@ -1,12 +1,12 @@
 <?php
 
-$connection=mysqli_connect('localhost','root','','Student');
-$query="SELECT * FROM `Student_details`;";
-$row=mysqli_query($connection,$query);
-$result=mysqli_fetch_all($row,MYSQLI_ASSOC);
+require './connection.php';
+$query = "SELECT * FROM Student_details";
+$statement = $connection->prepare($query);
+$statement->execute();
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +41,7 @@ $result=mysqli_fetch_all($row,MYSQLI_ASSOC);
             <th>UPDATE</th>
         </thead>
         <tbody>
-            <?php foreach($result as $data){?>
+            <?php foreach($result as $data) {?>
                 <tr>
                     <td><?= $data['Name']?></td>
                     <td><?= $data['Address']?></td>

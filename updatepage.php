@@ -2,12 +2,12 @@
 
 $id=$_GET['id'];
 
-$connection=mysqli_connect('localhost','root','','Student');
-$query="SELECT * FROM `Student_details` WHERE `Id`=$id";
-$result=mysqli_query($connection,$query);
-
-$user=mysqli_fetch_assoc($result);
-print_r($user);
+require './connection.php';
+$query = "SELECT * FROM Student_details WHERE Id=(?)";
+$params=[$id];
+$statement = $connection->prepare($query);
+$statement->execute($params);
+$user = $statement->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
